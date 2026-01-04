@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.google.gms.google-services' // ഫയർബേസ് സപ്പോർട്ടിന് ഇത് നിർബന്ധമാണ്
+
+android {
+    // നിങ്ങളുടെ പാക്കേജ് നെയിം ഇവിടെ നൽകുക (google-services.json-ൽ ഉള്ളത് തന്നെയാകണം)
+    namespace "com.example.a_one_music" 
+    compileSdkVersion 33
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        applicationId "com.example.a_one_music"
+        // Cloudinary, Audio Player എന്നിവയ്ക്ക് 21 എങ്കിലും വേണം
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            // സൈനിംഗ് കോൺഫിഗറേഷൻ ഇല്ലാത്തതുകൊണ്ട് തൽക്കാലം ഡീബഗ് ഉപയോഗിക്കാം
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // ആവശ്യമെങ്കിൽ കൂടുതൽ ആൻഡ്രോയിഡ് ഡിപെൻഡൻസികൾ ഇവിടെ ചേർക്കാം
+}
